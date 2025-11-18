@@ -1,0 +1,126 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в BelMail</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .login-container {
+            display: flex;
+            width: 900px;
+            height: 600px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .login-left {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+        }
+        .login-left h2 { font-size: 2.5rem; margin: 20px 0; }
+        .login-left p { color: #e0e0e0; }
+        .login-right {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .form-container {
+            width: 100%;
+        }
+        .form-container h3 { margin-bottom: 30px; font-size: 1.8rem; }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-left">
+            <img src="assets/image/logo.png" alt="BelMail Logo" style="height: 80px; filter: brightness(0) invert(1);">
+            <h2>Вход</h2>
+            <p>Для перехода к BelMail войдите в свой аккаунт. Этот аккаунт будет доступен другим приложениям в браузере.</p>
+        </div>
+        <div class="login-right">
+            <div class="form-container" id="emailFormContainer">
+                <h3>Введите вашу почту</h3>
+                <form id="emailForm">
+                    <div class="form-group">
+                        <input type="email" id="emailInput" placeholder="brsm@belmail.com" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Далее</button>
+                    <div class="error-message" id="emailError">Не удалось найти аккаунт</div>
+                </form>
+            </div>
+            
+            <div class="form-container" id="passwordFormContainer" style="display: none;">
+                <h3>Введите пароль</h3>
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <input type="password" id="passwordInput" placeholder="Пароль" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Войти</button>
+                    <div class="error-message" id="passwordError">Неверный пароль</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        const emailForm = document.getElementById('emailForm');
+        const passwordForm = document.getElementById('passwordForm');
+        const emailFormContainer = document.getElementById('emailFormContainer');
+        const passwordFormContainer = document.getElementById('passwordFormContainer');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        emailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            emailError.style.display = 'none';
+
+            if (email === 'brsm@belmail.com') {
+                loadingOverlay.style.display = 'flex';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                    emailFormContainer.style.display = 'none';
+                    passwordFormContainer.style.display = 'flex';
+                }, 5000);
+            } else {
+                emailError.style.display = 'block';
+            }
+        });
+
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const password = document.getElementById('passwordInput').value;
+            passwordError.style.display = 'none';
+            
+            if (password === '52253256Admin') {
+                window.location.href = 'mail.html';
+            } else {
+                passwordError.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

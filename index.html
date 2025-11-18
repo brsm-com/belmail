@@ -1,0 +1,74 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BelMail - Почта будущего с ИИ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <img src="assets/image/logo.png" alt="BelMail Logo" class="logo">
+            <nav>
+                <a href="login.html" class="btn">Войти</a>
+                <a href="#" id="registerBtn" class="btn btn-secondary">Зарегистрироваться</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 60px 0; text-align: center;">
+        <h1 style="font-size: 3rem; margin-bottom: 20px;">Добро пожаловать в BelMail</h1>
+        <p style="font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 40px;">Почта, которая думает за вас</p>
+        
+        <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+            <h2 style="color: var(--accent-color);">Почему BelMail с ИИ — это удобно?</h2>
+            <ul style="list-style: none; padding: 20px 0;">
+                <li style="margin-bottom: 15px;">✨ <strong>Умная сортировка:</strong> Наш ИИ автоматически категоризирует входящие письма, убирая рутину.</li>
+                <li style="margin-bottom: 15px;">🤖 <strong>Помощник в написании:</strong> Не знаете, как ответить? ИИ предложит варианты ответов, основываясь на контексте переписки.</li>
+                <li style="margin-bottom: 15px;">🛡️ <strong>Продвинутая безопасность:</strong> ИИ анализирует письма на наличие фишинга и вредоносных ссылок в реальном времени.</li>
+                <li style="margin-bottom: 15px;">📅 <strong>Умное планирование:</strong> ИИ поможет составить план задач из писем и напомнит о важных встречах.</li>
+                <li style="margin-bottom: 15px;">🧹 <strong>Чистый inbox:</strong> Автоматическое удаление спама и нерелевантных рассылок. Ваш почтовый ящик всегда чист.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>2025. Все права защищены</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Демо версия</h2>
+            <p style="margin-top: 20px;">Просим прощения, это демо версия приложения. Обращаем ваше внимание сайт защищен авторскими правами.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Modal logic
+        const modal = document.getElementById("registerModal");
+        const btn = document.getElementById("registerBtn");
+        const span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
